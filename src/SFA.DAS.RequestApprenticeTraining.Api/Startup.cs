@@ -13,6 +13,7 @@ using SFA.DAS.RequestApprenticeTraining.Api.Authentication;
 using SFA.DAS.RequestApprenticeTraining.Api.Authorization;
 using SFA.DAS.RequestApprenticeTraining.Api.TaskQueue;
 using SFA.DAS.RequestApprenticeTraining.Domain.Configuration;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
@@ -50,6 +51,10 @@ namespace SFA.DAS.RequestApprenticeTraining.Api
         {
             services.AddOpenTelemetryRegistration(Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]!);
 
+            services.AddHsts(options =>
+            {
+                options.MaxAge = TimeSpan.FromSeconds(7_776_000); // 90 days;
+            });
 
             var applicationSettingsSection = Configuration.GetSection(nameof(ApplicationSettings));
             var applicationSettings = applicationSettingsSection.Get<ApplicationSettings>();
