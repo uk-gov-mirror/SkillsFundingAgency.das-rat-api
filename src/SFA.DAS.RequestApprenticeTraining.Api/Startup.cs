@@ -53,7 +53,7 @@ namespace SFA.DAS.RequestApprenticeTraining.Api
 
             services.AddHsts(options =>
             {
-                options.MaxAge = TimeSpan.FromSeconds(7_776_000); // 90 days;
+                options.MaxAge = TimeSpan.FromDays(90);
             });
 
             var applicationSettingsSection = Configuration.GetSection(nameof(ApplicationSettings));
