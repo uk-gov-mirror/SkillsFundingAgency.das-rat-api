@@ -107,6 +107,7 @@ stages:
   variables:
   - group: PreProd Management Resources
   - group: PreProd Shared Resources
+  - group: PREPROD das-rat-api
   jobs:
   - template: pipeline-templates/job/deploy.yml
     parameters:
